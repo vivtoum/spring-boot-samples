@@ -12,7 +12,6 @@ import java.util.Date;
 public class TbPermission implements Serializable {
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**

@@ -12,7 +12,6 @@ import lombok.Data;
 public class TbUser implements Serializable {
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**
