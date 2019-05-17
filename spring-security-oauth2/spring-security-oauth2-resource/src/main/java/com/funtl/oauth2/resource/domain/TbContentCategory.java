@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.*;
 import lombok.Data;
 
+@Entity
 @Data
 @Table(name = "tb_content_category")
 public class TbContentCategory implements Serializable {
@@ -13,7 +14,6 @@ public class TbContentCategory implements Serializable {
      */
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**

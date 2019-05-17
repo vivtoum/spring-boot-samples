@@ -12,18 +12,14 @@ public interface TbContentService {
      * @param id ID
      * @return {@link TbContent}
      */
-    default TbContent getById(Long id) {
-        return null;
-    }
+    TbContent getById(Long id);
 
     /**
      * 获取全部数据
      *
      * @return {@link List<TbContent>}
      */
-    default List<TbContent> selectAll() {
-        return null;
-    }
+    List<TbContent> selectAll();
 
     /**
      * 新增
@@ -31,9 +27,7 @@ public interface TbContentService {
      * @param tbContent {@link TbContent}
      * @return int 数据库受影响行数
      */
-    default int insert(TbContent tbContent) {
-        return 0;
-    }
+    TbContent insert(TbContent tbContent);
 
     /**
      * 编辑
@@ -41,9 +35,7 @@ public interface TbContentService {
      * @param tbContent {@link TbContent}
      * @return int 数据库受影响行数
      */
-    default int update(TbContent tbContent) {
-        return 0;
-    }
+    TbContent update(TbContent tbContent);
 
     /**
      * 删除
@@ -51,8 +43,6 @@ public interface TbContentService {
      * @param id ID
      * @return int 数据库受影响行数
      */
-    default int delete(Long id) {
-        return 0;
-    }
+    void delete(Long id);
 
 }

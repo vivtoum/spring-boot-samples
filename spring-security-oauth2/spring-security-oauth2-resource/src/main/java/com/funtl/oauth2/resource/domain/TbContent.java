@@ -3,14 +3,15 @@ package com.funtl.oauth2.resource.domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+
 import lombok.Data;
 
+@Entity
 @Data
 @Table(name = "tb_content")
 public class TbContent implements Serializable {
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**

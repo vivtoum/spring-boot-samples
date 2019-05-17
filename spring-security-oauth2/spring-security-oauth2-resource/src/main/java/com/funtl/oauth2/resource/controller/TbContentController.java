@@ -49,11 +49,10 @@ public class TbContentController {
      * @return
      */
     @PostMapping("/insert")
-    public ResponseResult<Integer> insert(@RequestBody TbContent tbContent) {
-        int count = tbContentService.insert(tbContent);
-
-        if (count > 0) {
-            return new ResponseResult<>(Integer.valueOf(HttpStatus.OK.value()), HttpStatus.OK.toString(), count);
+    public ResponseResult insert(@RequestBody TbContent tbContent) {
+        TbContent content = tbContentService.insert(tbContent);
+        if (content.getId() != 0 || content.getId() != null) {
+            return new ResponseResult<TbContent>(Integer.valueOf(HttpStatus.OK.value()), HttpStatus.OK.toString(), content);
         } else {
             return new ResponseResult<>(Integer.valueOf(HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST.toString());
         }
@@ -66,11 +65,11 @@ public class TbContentController {
      * @return
      */
     @PutMapping("/update")
-    public ResponseResult<Integer> update(@RequestBody TbContent tbContent) {
-        int count = tbContentService.update(tbContent);
+    public ResponseResult update(@RequestBody TbContent tbContent) {
+        TbContent content = tbContentService.update(tbContent);
 
-        if (count > 0) {
-            return new ResponseResult<>(Integer.valueOf(HttpStatus.OK.value()), HttpStatus.OK.toString(), count);
+        if (content.getId() != 0 || content.getId() != null) {
+            return new ResponseResult<TbContent>(Integer.valueOf(HttpStatus.OK.value()), HttpStatus.OK.toString(), content);
         } else {
             return new ResponseResult<>(Integer.valueOf(HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST.toString());
         }
@@ -83,13 +82,8 @@ public class TbContentController {
      * @return
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseResult<Integer> delete(@PathVariable Long id) {
-        int count = tbContentService.delete(id);
-
-        if (count > 0) {
-            return new ResponseResult<>(Integer.valueOf(HttpStatus.OK.value()), HttpStatus.OK.toString(), count);
-        } else {
-            return new ResponseResult<>(Integer.valueOf(HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST.toString());
-        }
+    public ResponseResult delete(@PathVariable Long id) {
+        tbContentService.delete(id);
+        return new ResponseResult<>(Integer.valueOf(HttpStatus.OK.value()), HttpStatus.OK.toString(), "ok");
     }
 }

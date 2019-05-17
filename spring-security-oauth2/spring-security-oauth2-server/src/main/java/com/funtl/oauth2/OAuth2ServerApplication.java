@@ -16,7 +16,6 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @see com.funtl.oauth2
  */
 @SpringBootApplication
-@MapperScan(basePackages = "com.funtl.oauth2.server.mapper")
 public class OAuth2ServerApplication {
 
     public static void main(String[] args) {

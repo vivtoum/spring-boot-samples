@@ -2,21 +2,36 @@ spring:
   application:
     name: oauth2-server
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: jdbc:mysql://192.168.141.128:3307/oauth2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://www.vivtoum.tech:3306/uaa?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
-    password: 123456
-    hikari:
-      minimum-idle: 5
-      idle-timeout: 600000
-      maximum-pool-size: 10
-      auto-commit: true
-      pool-name: MyHikariCP
-      max-lifetime: 1800000
-      connection-timeout: 30000
-      connection-test-query: SELECT 1
+    password: Vedyou@163.com
+    ######################### Druid连接池的配置信息  #################
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
 
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/view/
+    suffix: .html
+    encoding: utf-8
+    mode: LEGACYHTML5
 server:
   port: 8080
 

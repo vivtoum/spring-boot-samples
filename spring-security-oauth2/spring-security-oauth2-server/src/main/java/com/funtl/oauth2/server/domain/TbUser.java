@@ -3,8 +3,10 @@ package com.funtl.oauth2.server.domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+
 import lombok.Data;
 
+@Entity
 @Data
 @Table(name = "tb_user")
 public class TbUser implements Serializable {

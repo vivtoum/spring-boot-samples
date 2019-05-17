@@ -1,7 +1,7 @@
 package com.funtl.oauth2.resource.service.impl;
 
 import com.funtl.oauth2.resource.domain.TbContent;
-import com.funtl.oauth2.resource.mapper.TbContentMapper;
+import com.funtl.oauth2.resource.dao.TbContentDao;
 import com.funtl.oauth2.resource.service.TbContentService;
 import org.springframework.stereotype.Service;
 
@@ -12,30 +12,30 @@ import java.util.List;
 public class TbContentServiceImpl implements TbContentService {
 
     @Resource
-    private TbContentMapper tbContentMapper;
+    private TbContentDao tbContentDao;
 
     @Override
     public TbContent getById(Long id) {
-        return tbContentMapper.selectByPrimaryKey(id);
+        return tbContentDao.findById(id).get();
     }
 
     @Override
     public List<TbContent> selectAll() {
-        return tbContentMapper.selectAll();
+        return tbContentDao.findAll();
     }
 
     @Override
-    public int insert(TbContent tbContent) {
-        return tbContentMapper.insert(tbContent);
+    public TbContent insert(TbContent tbContent) {
+        return tbContentDao.save(tbContent);
     }
 
     @Override
-    public int update(TbContent tbContent) {
-        return tbContentMapper.updateByPrimaryKey(tbContent);
+    public TbContent update(TbContent tbContent) {
+        return tbContentDao.save(tbContent);
     }
 
     @Override
-    public int delete(Long id) {
-        return tbContentMapper.deleteByPrimaryKey(id);
+    public void delete(Long id) {
+        tbContentDao.deleteById(id);
     }
 }
